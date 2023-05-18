@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Dados pessoais</legend>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required><br><br>
+        <label for="adress">Endereço:</label>
+        <input type="text" id="adress" required><br><br>
+        <label for="city">Cidade:</label>
+        <input type="text" id="city" required> <br><br>
+        <label for="state">Estado</label>
+        <select id="state" required>
+            <option value="AC" selected>Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+            <option value="DF">Distrito Federal</option>
+        </select>
+    </fieldset> 
+    <br>
+    <fieldset>
+        <legend>Dados profissionais</legend>
+        <p>Natureza do Cargo</p>
+        <input type="radio" name="option" value="Gerência" checked>Gerência
+        <input type="radio" name="option" value="Financeiro">Financeiro
+        <input type="radio" name="option" value="Recepção">Recepção
+        <input type="radio" name="option" value="Administrativo">Administrativo
+        <input type="radio" name="option" value="Jurídico">Jurídico
+        <br>
+        <p>Área de interesse</p>
+        <input type="checkbox" name="checkB" id="checkbox1" value="Computação">Computação
+        <input type="checkbox" name="checkB" id="checkbox2" value="Biologia">Biologia
+        <input type="checkbox" name="checkB" id="checkbox3" value="Meio Ambiente">Meio Ambiente
+        <input type="checkbox" name="checkB" id="checkbox4" value="Engenharia">Engenharia
+        <input type="checkbox" name="checkB" id="checkbox5" value="História">História
+        <br><br>
+        Mini-curriculo:<textarea name="" id="textArea" cols="30" rows="10"></textarea>
+    </fieldset>
+    <br>
+    <button id="submitBtn" type="button">Enviar</button>
+    <button>Limpar</button>
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", function() {
+
+        const name = document.getElementById("name").value
+        const adress = document.getElementById("adress").value
+        const city = document.getElementById("city").value
+        const state = document.getElementById("state").value
+        const selectedOption = document.querySelector('input[name="option"]:checked')
+        const selectedValue = selectedOption.value
+        const inputOption = document.querySelectorAll('input[name="checkB"]:checked')
+        const inputValue = []
+        const checkbox1 = document.getElementById("checkbox1");
+        const checkbox2 = document.getElementById("checkbox2");
+        const checkbox3 = document.getElementById("checkbox3");
+        const checkbox4 = document.getElementById("checkbox4")
+        const checkbox5 = document.getElementById("checkbox5")
+        const textArea = document.getElementById("textArea").value
+        
+        inputOption.forEach(function(option) {
+            inputValue.push(option.value);
+        });
+        
+        if (!checkbox1.checked && !checkbox2.checked && !checkbox3.checked && !checkbox4.checked && !checkbox5.checked) {
+            alert("Selecione pelo menos uma opção.");
+            return false;
+        }
+
+        console.log(`Nome:${name}\n\nEndereço:${adress}\n\nCidade:${city}\n\nEstado:${state}\n\nNatereza do cargo:${selectedValue}\n\nÁrea de interesse:${inputValue}\n\nMini-curriculo:${textArea}`)
+        });
+    </script>
+</body>
+</html>
+<!-- 1. Desenvolva uma página HTML que replique a imagem acima,
+contendo um formulário com todos os itens mostrados.
+2. Todos os campos de dados pessoais devem ser preenchidos
+obrigatoriamente pelo usuário.
+3. Ao carregar a página deve vir previamente marcado um dos radios
+buttons.
+4. O usuário deve marcar ao menos um checkbox. Deve ser validado o
+preenchimento desse input.
+5. O campo de texto de label “mini-curriculo” não é obrigatório o
+preenchimento pelo usuário.
+6. Capture os dados preenchidos no formulário utilizando os métodos
+de manipulação do DOM. Ao final, mostre no console.log os dados
+preenchidos pelo usuário. -->
